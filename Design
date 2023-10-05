@@ -1,0 +1,64 @@
+EquationRunner class:
+1. Import the Scanner class in this class
+2. allow the user to import two coordinate points in a string c.
+3. Use string methods to parse out the x and y values
+- after scanning inputs do Integer.parseIntpoint1.split(“,”[0].trim()) twice for each coordinate and for the y1 do [1] for the second pair do point.2.
+4. Create a new LinearEquation object with the inputs of x1,x2,y1,y2
+5. Do print statements displaying the coordinates, the equation, the slope, the yIntercept,and the distance(by calling the method)
+6. Ask the user to enter a third x value and scan it
+7. Then print it with the findYValue method
+
+
+LinearEquation class: (no print statements)
+variables:
+Private int x1 - variable represents the first x coordinate inputted
+Private int x2 - variable represents the second x coorinate inputted
+Private int y1 - variable represents the first y coordinate inputted
+Private int y2 - variable represents the second y coordinate inputted
+Private double slope
+Private double yIntercept
+Private double distance
+
+
+LinearEquation object with (x1, x2, y1, y2) as parameter
+Use this. For each parameter
+calculateDistance
+calculateYIntercept
+calculateSlope
+
+
+(note the distance, slope,and yintercept methods will be private void as they are referred back to)
+calculateDistance method - calculates the distance from one coordinate to the other and round to nearest hundredth
+distance = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)
+distance = math.squrt(distance)
+Distance = Math.round(distance * 100.0) / 100.0
+
+
+calculateSlope method - calcuates the slope of the coordinates and round to nearest hundredth
+double slope = (y2 - y1) / (x2 - x1)
+
+
+calculateYintercept method - finds the y intercept using the coordinates and round to nearest hundredth
+yIntercept = y1 -slope * x1
+
+
+findYValue method - uses x3 as a parameter and saves as double and returns string
+double yValue = slope * x3 +yIntercept
+Double yValue = Math.round(y * 100.0)/ 100.0
+Return String.format(“(%.2f, %.2f)”, x3,yValue)
+
+
+writeEquation method -also a string
+String writeSlope
+If slope == int slope
+writeSlope = Integer.toString((int) slope)
+Else
+writeSlope = Double.toString(slope)
+
+String writeYIntercept
+If yIntercept == int yIntercept
+writeYIntercept = Integer.toString((int) yIntercept)
+Else
+writeYIntercept = Double.toString(yIntercept)
+
+Return “y = “ + writeSlope + “x + “ + writeYIntercept
