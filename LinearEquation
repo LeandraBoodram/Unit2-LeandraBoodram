@@ -1,0 +1,70 @@
+public class LinearEquation {
+
+    private int x1;
+    private int x2;
+    private int y1;
+    private int y2;
+    private double slope;
+    private double yIntercept;
+    private double distance;
+
+    public LinearEquation(int x1, int x2, int y1, int y2) {
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
+        calculateDistance();
+        calculateSlope();
+        calculateYIntercept();
+    }
+
+    private void calculateDistance() {
+        distance = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2);
+        distance = Math.sqrt(distance);
+        distance = Math.round(distance * 100.0) / 100.0;
+    }
+
+    private void calculateSlope() {
+        slope = (double) (y2 - y1) / (x2 - x1);
+    }
+
+
+    private void calculateYIntercept() {
+        yIntercept = y1 - slope * x1;
+    }
+
+    public String findYValue(double x3) {
+        double yValue = slope * x3 + yIntercept;
+        yValue = Math.round(yValue * 100.0) / 100.0;
+        return String.format("(%.1f, %.1f)", x3, yValue);
+    }
+
+    public String writeEquation() {
+        String writeSlope;
+        if (slope == (int) slope) {
+            writeSlope = Integer.toString((int) slope);
+            writeSlope = writeSlope +"/" + x1;
+        } else {
+            writeSlope = Double.toString(slope);
+        }
+
+        String writeYIntercept;
+        if (yIntercept == (int) yIntercept) {
+            writeYIntercept = Integer.toString((int) yIntercept);
+        } else {
+            writeYIntercept = Double.toString(yIntercept);
+        }
+
+        return "y = " + writeSlope + "x + " + writeYIntercept;
+    }
+
+    public double printSlope(){
+        return slope;
+    }
+    public double printYIntercept() {
+        return yIntercept;
+    }
+    public double printDistance(){
+        return distance;
+    }
+}
