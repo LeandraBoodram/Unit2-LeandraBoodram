@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class EquationRunner {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter your first coordinate point: ");
+        String point1 = scan.nextLine();
+        point1 = point1.replaceAll("[()]", "");
+        int x1 = Integer.parseInt(point1.split(",")[0].trim());
+        int y1 = Integer.parseInt(point1.split(",")[1].trim());
+
+        System.out.print("Enter your second coordinate point: ");
+        String point2 = scan.nextLine();
+        point2 = point2.replaceAll("[()]", "");
+        int x2 = Integer.parseInt(point2.split(",")[0].trim());
+        int y2 = Integer.parseInt(point2.split(",")[1].trim());
+
+        LinearEquation equation = new LinearEquation(x1, x2, y1, y2);
+
+        System.out.println("First pair: (" + x1 + ", " + y1 + ")");
+        System.out.println("Second Pair: (" + x2 + ", " + y2 + ")");
+        System.out.println("Slope of line: " + equation.printSlope());
+        System.out.println("y-intercept: " + equation.printYIntercept());
+        System.out.print("slope Intercept form: ");
+        System.out.print(equation.writeEquation());
+        System.out.println();
+        System.out.println("Distance between points: " + equation.printDistance());
+        System.out.print("Enter a third x-value: ");
+        double x3 = scan.nextDouble();
+        System.out.println("Solved coordinate Point: " + equation.findYValue(x3));
+
+    }
+}
